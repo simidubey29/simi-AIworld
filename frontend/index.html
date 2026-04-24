@@ -108,14 +108,11 @@ async function send() {
   if (!msg) return;
 
   addMessage(msg, "user");
-  document.getElementById("msg").value = "";
-
-  addMessage("Simi is typing...", "bot");
 
   try {
-    console.log("Sending request...");
+    addMessage("Simi is typing...", "bot");
 
-    const res = await fetch(API + "/api/chat", {
+    const res = await fetch(`${API}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -123,14 +120,13 @@ async function send() {
       body: JSON.stringify({ message: msg })
     });
 
-    console.log("Response status:", res.status);
+    console.log("STATUS:", res.status);
 
     const data = await res.json();
 
-    // remove typing
     document.getElementById("chat").lastChild.remove();
 
-    addMessage(data.reply || "No reply 😅", "bot");
+    addMessage(data.reply, "bot");
 
   } catch (err) {
     console.log(err);
