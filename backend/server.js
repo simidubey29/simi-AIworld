@@ -39,6 +39,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash"
 });
+console.log("MODEL USED:", "gemini-1.5-flash");
 app.get("/test-ai", async (req, res) => {
   try {
     const result = await model.generateContent("Say hello like a cute AI");
