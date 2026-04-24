@@ -37,7 +37,7 @@ const Confession = mongoose.model("Confession", {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-pro"
+  model: "gemini-1.5-flash"
 });
 app.get("/test-ai", async (req, res) => {
   try {
